@@ -1,3 +1,6 @@
+
+//GitHub API のレスポンスから取得したリポジトリ情報を表現するためのモデルクラス
+
 class Repository {
   final String name;
   final String ownerAvatarUrl;
@@ -17,15 +20,16 @@ class Repository {
     required this.openIssues,
   });
 
-  factory Repository.fromJson(Map<String, dynamic> json) {
+  /// JSONデータをRepositoryオブジェクトに変換するファクトリメソッド。
+  factory Repository.fromJson(Map<String, dynamic> repositoryJson) {
     return Repository(
-      name: json['name'],
-      ownerAvatarUrl: json['owner']['avatar_url'],
-      language: json['language'] ?? 'N/A',
-      stars: json['stargazers_count'],
-      watchers: json['watchers_count'],
-      forks: json['forks_count'],
-      openIssues: json['open_issues_count'],
+      name: repositoryJson['name'],
+      ownerAvatarUrl: repositoryJson['owner']['avatar_url'],
+      language: repositoryJson['language'] ?? 'N/A',
+      stars: repositoryJson['stargazers_count'],
+      watchers: repositoryJson['watchers_count'],
+      forks: repositoryJson['forks_count'],
+      openIssues: repositoryJson['open_issues_count'],
     );
   }
 }

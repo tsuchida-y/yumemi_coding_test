@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:yumemi_codingtest/models/repository.dart';
+import 'package:yumemi_coding_test/models/repository.dart';
+
+/// リポジトリの詳細情報を表示する画面を構築するクラス
+/// リポジトリ名、オーナーのアバター画像、使用言語、スター数などを表示する
 
 class RepositoryDetailScreen extends StatelessWidget {
   final Repository repository;

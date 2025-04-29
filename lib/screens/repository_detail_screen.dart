@@ -11,6 +11,15 @@ class RepositoryDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 表示するラベルと値をリストで管理
+    final repositoryDetails = [
+      {"label": "言語", "value": repository.language},
+      {"label": "スター数", "value": repository.stars.toString()},
+      {"label": "ウォッチャー数", "value": repository.watchers.toString()},
+      {"label": "フォーク数", "value": repository.forks.toString()},
+      {"label": "未解決の課題", "value": repository.openIssues.toString()},
+    ];
+
     return Scaffold(
       appBar: AppBar(title: Text(repository.name)),
       body: Padding(
@@ -22,16 +31,14 @@ class RepositoryDetailScreen extends StatelessWidget {
                 radius: 50,
                 backgroundImage: NetworkImage(repository.ownerAvatarUrl),
               ),
-              SizedBox(height: 10),
-              _buildDetailRow("言語", repository.language),
-              SizedBox(height: 10),
-              _buildDetailRow("スター数", repository.stars.toString()),
-              SizedBox(height: 10),
-              _buildDetailRow("ウォッチャー数", repository.watchers.toString()),
-              SizedBox(height: 10),
-              _buildDetailRow("フォーク数", repository.forks.toString()),
-              SizedBox(height: 10),
-              _buildDetailRow("未解決の課題", repository.openIssues.toString()),
+              SizedBox(height: 20),
+              // リストを動的にウィジェットに変換
+              ...repositoryDetails.map((detailItem) => Column(
+                    children: [
+                      _buildDetailRow(detailItem["label"]!, detailItem["value"]!),
+                      SizedBox(height: 10),
+                    ],
+              )),
             ],
           ),
         ),
@@ -39,7 +46,7 @@ class RepositoryDetailScreen extends StatelessWidget {
     );
   }
 
-  /// ラベルと値を揃えて表示する行を構築するヘルパーメソッド
+  /// ラベルと値を揃えて表示する行を構築するメソッド
   Widget _buildDetailRow(String label, String value) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

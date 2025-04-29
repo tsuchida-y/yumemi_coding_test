@@ -1,16 +1,76 @@
-# yumemi_coding_test
+# GitHubリポジトリ検索アプリ
 
-A new Flutter project.
+## 概要
+このアプリは、GitHub API を利用してリポジトリを検索し、検索結果を一覧表示する Flutter アプリです。
+ユーザーは検索キーワードを入力することで、GitHub 上のリポジトリを簡単に検索できます。
 
-## Getting Started
+## 背景・目的
+- 株式会社ゆめみ様のコーディングテスト課題として作成しました。
+- GitHub API を活用したアプリケーションの設計・実装能力をアピールするため。
+- Flutter を使用したモダンな UI/UX の実現を目指しました。
 
-This project is a starting point for a Flutter application.
+## 主な機能
+- **リポジトリ検索**: キーワードを入力して GitHub 上のリポジトリを検索。
+- **検索結果の表示**: リポジトリ名、スター数、言語、フォーク数、ウォッチャー数などを一覧表示。
+- **詳細画面**: リポジトリの詳細情報（オーナーのアバター画像、スター数、言語など）を表示。
+- **エラーハンドリング**: ネットワークエラーや検索結果がない場合の適切なメッセージ表示。
+- **ダークモード対応**: ユーザーのデバイス設定に応じたテーマ切り替え。
 
-A few resources to get you started if this is your first Flutter project:
+## 工夫した点
+- **コードの可読性と保守性**: クリーンアーキテクチャを意識し、UI、ビジネスロジック、データ層を分離。
+- **エラーハンドリング**: ネットワークエラーや無効な入力に対する適切なフィードバックを実装。
+- **レスポンシブデザイン**: 様々な画面サイズに対応し、画面回転時もレイアウトが崩れないように設計。
+- **テスト可能な構成**: API 呼び出し部分をサービスクラスに分離し、ユニットテストを容易に。
+- **CI/CD**: GitHub Actions を利用してビルド、テスト、リントを自動化。
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 使用技術
+- **言語**: Dart
+- **フレームワーク**: Flutter
+- **API**: GitHub REST API
+- **パッケージ**:
+  - `http`: HTTP リクエストの送信
+  - `provider`: 状態管理
+  - `flutter_test`: テストフレームワーク
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ファイル構成
+```
+.
+└── lib/
+    ├── models/
+    │   └── repository.dart
+    ├── screens/
+    │   ├── repository_detail_screen.dart
+    │   └── search_screen.dart
+    ├── services/
+    │   └── github_api?service.dart
+    ├── widgets/
+    │   └── repository_card.dart
+    └── main.dart
+```
+
+## 使用方法
+1. このリポジトリをクローンします。
+   ```bash
+   git clone https://github.com/your-username/github-repository-search.git
+2. 必要なパッケージをインストールします。
+    ```bash
+    flutter pub get
+3. アプリを実行します。
+    ```bash
+    flutter run
+## テスト
+- **ユニットテスト**: `github_api_service.dart` の API 呼び出しロジックをテスト。
+- **UIテスト**: 検索画面と詳細画面の動作確認。
+- **テストの実行方法**:
+    ```bash
+    flutter test
+## 今後の改善点
+- **多言語対応**:日本語と英語の切り替えをサポートする。
+- **アニメーション**:検索結果の表示にアニメーションを追加する。
+- **キャッシュ機能**:検索結果をローカルにキャッシュしてオフラインでも表示可能にする。
+- **ソート機能**:スター数やフォーク数で検索結果を並び替える機能を追加する。
+- **UI/UX**: ダークモード対応、エラーメッセージ表示、レスポンシブデザインを実装。
+
+## アピールポイント
+- **レビューのしやすさ**:適切なコメントとファイル構成でコードを整理
+- **Git運用**:適切なコミット粒度とブランチ運用を実施

@@ -45,6 +45,7 @@
     │   └── github_api?service.dart
     ├── widgets/
     │   └── repository_card.dart
+    │   └── empty_result_widget.dart
     └── main.dart
 ```
 

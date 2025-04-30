@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yumemi_coding_test/services/github_api_service.dart';
 import 'package:yumemi_coding_test/models/repository.dart';
+import 'package:yumemi_coding_test/widgets/empty_result_widget.dart';
 import 'package:yumemi_coding_test/widgets/repository_card.dart';
 
 ///リポジトリ検索画面を構築するクラス
@@ -46,12 +47,15 @@ class SearchScreenState extends State<SearchScreen> {
               child: Text("検索"),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: _repositoryList.length,
-                itemBuilder: (context, index) {
-                  return RepositoryCard(repository: _repositoryList[index]);
-                },
-              ),
+              child: _repositoryList.isEmpty
+                  ? const EmptyResultWidget() 
+                  : ListView.builder(
+                      itemCount: _repositoryList.length,
+                      itemBuilder: (context, index) {
+                        return RepositoryCard(
+                            repository: _repositoryList[index]);
+                      },
+                    ),
             ),
           ],
         ),

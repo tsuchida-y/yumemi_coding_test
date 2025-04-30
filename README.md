@@ -45,6 +45,7 @@
     │   └── github_api?service.dart
     ├── widgets/
     │   └── repository_card.dart
+    │   └── empty_result_widget.dart
     └── main.dart
 ```
 
@@ -74,3 +75,10 @@
 ## アピールポイント
 - **レビューのしやすさ**:適切なコメントとファイル構成でコードを整理
 - **Git運用**:適切なコミット粒度とブランチ運用を実施
+
+## クレジット（画像著作権表記）
+
+このアプリで使用しているイラストは以下の素材を利用しています：
+
+- [Person looking through magnifying glass - pch.vector](https://jp.freepik.com/free-vector/person-looking-through-magnifying-glass-question-mark-hand-holding-magnifier-search-answer-flat-vector-illustration-information-concept-banner-website-design-landing-web-page_27573146.htm)  
+  著作者：pch.vector／出典：Freepik

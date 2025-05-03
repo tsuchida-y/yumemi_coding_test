@@ -11,7 +11,7 @@ class EmptyResultWidget extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            'assets/notfound.png',
+            'assets/not_found.png',
             width: 300,
             height: 300,
           ),

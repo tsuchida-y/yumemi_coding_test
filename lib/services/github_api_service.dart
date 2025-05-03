@@ -1,13 +1,15 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:yumemi_coding_test/models/repository.dart';
 
 ///GitHub API を利用してリポジトリを検索するためのクラス
 class GitHubApiService {
-  final String _baseUrl = "https://api.github.com/search/repositories";
 
   Future<List<Repository>> searchRepositories(String searchQuery) async {
-    final response = await http.get(Uri.parse('$_baseUrl?q=$searchQuery'));
+    final String? baseUrl = dotenv.env['GITHUB_API_BASE_URL'];
+    final response = await http.get(Uri.parse('$baseUrl?q=$searchQuery'));
 
     if (response.statusCode == 200) {
 
@@ -17,7 +19,7 @@ class GitHubApiService {
       return repositoriesJson.map((repo) => Repository.fromJson(repo)).toList();
 
     } else {
-      throw Exception('Failed to load repositories');
+      throw Exception('Failed to load repositories. Status code: ${response.statusCode}, Body: ${response.body}');
     }
   }
 }

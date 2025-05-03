@@ -16,9 +16,19 @@
 - **ソート機能**: 検索結果をスター数・フォーク数で昇順・降順にソート。
 
 ## 工夫した点
-- **コードの可読性と保守性**: 機能や役割（モデル、スクリーン、サービス、ウィジェット）ごとにファイルを分割し、責務を明確化。
-- **検索結果が空の場合のUX向上**: 検索結果がない場合に専用の画像とメッセージを表示し、ユーザーが状況を直感的に理解できるように配慮。
-- **コミットメッセージ規約**: プレフィックス（例: `feat:`, `fix:`）を用いることで、各コミットの変更内容を容易に識別できるようにした。
+
+-   **コードの可読性と保守性の向上**:
+    *   **責務の明確化**: 機能や役割（モデル、スクリーン、サービス、ウィジェットなど）に基づいてファイルを分割しました。
+    *   **命名規則**: 変数名やメソッド名を分かりやすくし、コードの意図を理解しやすくしました。
+    *   **コード整形**: リストなどの要素を縦に揃えることで、各要素の違いを視覚的に分かりやすくしました。
+
+-   **ユーザー体験 (UX) の向上**:
+    *   **空の検索結果**: 検索結果がない場合に専用の画像とメッセージを表示し、ユーザーが状況を直感的に把握できるようにしました。
+    *   **状態の可視化**: 現在選択されているソート条件やテーマモードにチェックマークを表示し、現在の設定を分かりやすくしました。
+
+-   **開発プロセスの効率化**:
+    *   **コミットメッセージ規約**: Conventional Commits のプレフィックス（例: `feat:`, `fix:`）を導入し、各コミットの変更内容を容易に識別できるようにしました。
+
 
 ## 使用技術
 - **言語**: Dart
@@ -31,21 +41,25 @@
 
 ## ファイル構成
 ```
-.
-└── lib/
-    ├── models/
-    │   ├── repository_sorter.dart
-    │   └── repository.dart
-    ├── screens/
-    │   ├── repository_detail_screen.dart
-    │   └── search_screen.dart
-    ├── services/
-    │   └── github_api_service.dart
-    ├── widgets/
-    │   ├── repository_card.dart
-    │   ├── empty_result.dart
-    │   └── sort_option.dart
-    └── main.dart
+lib/
+├── main.dart
+├── models/
+│   └── repository.dart
+├── providers/
+│   └── theme_provider.dart
+├── screens/
+│   ├── repository_detail_screen.dart
+│   └── search_screen.dart
+├── services/
+│   └── github_api_service.dart
+├── utils/
+│   ├── repository_sorter.dart
+│   └── themes.dart
+└── widgets/
+    ├── empty_result.dart
+    ├── repository_card.dart
+    ├── sort_option.dart
+    └── theme_selection_bottom_sheet.dart
 ```
 
 ## 開発ルール
@@ -58,7 +72,7 @@
 - **docs**: ドキュメントのみの変更
 - **style**: コードの意味に影響を与えない変更（空白、フォーマット、セミコロンの追加など）
 - **refactor**: バグ修正や機能追加ではないコードの変更
-- **perf**: パフォーマンス向上を目的とした変更
+- **perf**: パフォーマンス向上、可読性向上を目的とした変更
 - **test**: テストの追加や既存テストの修正
 - **chore**: ビルドプロセスや補助ツール、ライブラリ関連の変更
 

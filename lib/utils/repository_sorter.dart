@@ -2,7 +2,6 @@ import 'package:yumemi_coding_test/models/repository.dart';
 
 /// リポジトリのリストをソートするためのクラス。
 /// 指定された条件（スター数、フォーク数など）と順序（昇順/降順）に基づいてソートする。
-
 class RepositorySorter {
   static void sortRepositories(
       List<Repository> repositories, String sortOption, bool isAscending) {

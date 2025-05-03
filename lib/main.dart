@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
-import 'screens/search_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'package:yumemi_coding_test/providers/theme_provider.dart';
+import 'package:yumemi_coding_test/utils/themes.dart';
+import 'package:yumemi_coding_test/screens/search_screen.dart';
 
 /// アプリのエントリーポイント。
 /// MaterialAppを構築し、テーマ設定やホーム画面としてSearchScreenを指定。
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,14 +22,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'GitHub Repository Search',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      home: SearchScreen(),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: 'GitHub Repository Search',
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: themeProvider.themeMode, // Consumerから受け取った themeProvider を使用
+          home: SearchScreen(),
+        );
+      },
     );
   }
 }

@@ -18,20 +18,38 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# VS Code related
+.vscode/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
+# Flutter/Dart related
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.packages
 .pub-cache/
 .pub/
 /build/
+ios/Pods/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/ephemeral/
+ios/.symlinks/
+ios/Flutter/Generated.xcconfig
+ios/Runner/GeneratedPluginRegistrant.*
+**/doc/api/ # Added from the second block
+**/ios/Flutter/.last_build_id # Added from the second block
+
+
+# Android related
+android/.gradle/
+android/app/build/
+android/app/.*
+android/app/debug.keystore
+android/app/profile.keystore
+android/app/release.keystore
+android/gradle.properties # If it contains sensitive information
+android/local.properties
+*.jks
 
 # Symbolication related
 app.*.symbols
@@ -43,3 +61,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Sensitive files (Add any files containing API keys, secrets, etc.)
+# Example:
+# secrets.json
+.env

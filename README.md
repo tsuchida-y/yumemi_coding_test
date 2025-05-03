@@ -37,6 +37,7 @@
 - **パッケージ**:
   - `http`: HTTP リクエストの送信
   - `provider`: 状態管理
+  - `flutter_dotenv`: 環境変数管理 (.env ファイル)
   - `flutter_test`: テストフレームワーク
 
 ## ファイル構成

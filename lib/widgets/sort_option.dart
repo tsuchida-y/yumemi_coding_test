@@ -5,7 +5,6 @@ typedef SortCallback = void Function(String sortOption, bool isSortAscending);
 
 /// ソートオプションを選択するためのドロップダウンメニューを提供するウィジェット。
 /// ユーザーがソート条件や昇順/降順を選択できる。
-
 class SortDropdown extends StatelessWidget {
   final SortCallback onSortSelected;
   final bool isSortAscending;

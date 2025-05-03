@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:yumemi_coding_test/models/repository.dart';
 
 ///GitHub API を利用してリポジトリを検索するためのクラス
-
 class GitHubApiService {
   final String _baseUrl = "https://api.github.com/search/repositories";
 

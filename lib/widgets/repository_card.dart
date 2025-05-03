@@ -4,7 +4,6 @@ import 'package:yumemi_coding_test/screens/repository_detail_screen.dart';
 
 /// GitHubリポジトリ情報を表示するカードウィジェットを構築するウィジェット
 /// リポジトリ名、使用言語、オーナーのアバター画像を表示し、タップすると詳細画面に遷移する
-
 class RepositoryCard extends StatelessWidget {
   final Repository repository;
 

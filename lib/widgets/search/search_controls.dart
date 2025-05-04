@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yumemi_coding_test/widgets/sort_option.dart';
+import 'package:yumemi_coding_test/widgets/search/sort_dropdown.dart';
 
 /// 検索入力フィールド、検索ボタン、ソートドロップダウンをまとめたウィジェット。
 class SearchControls extends StatelessWidget {

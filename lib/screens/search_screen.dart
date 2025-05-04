@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:yumemi_coding_test/utils/repository_sorter.dart';
 import 'package:yumemi_coding_test/services/github_api_service.dart';
 import 'package:yumemi_coding_test/models/repository.dart';
-import 'package:yumemi_coding_test/widgets/search_controls.dart';
-import 'package:yumemi_coding_test/widgets/search_result_view.dart';
-import 'package:yumemi_coding_test/widgets/theme_selection_bottom_sheet.dart';
+import 'package:yumemi_coding_test/widgets/search/search_controls.dart';
+import 'package:yumemi_coding_test/widgets/search/search_result_view.dart';
+import 'package:yumemi_coding_test/widgets/theme/theme_selection_bottom_sheet.dart';
 
 /// リポジトリ検索画面の状態を管理するクラス。
 /// ユーザー入力、検索結果リスト、ソート状態の保持、API呼び出し、UI更新を行う。
@@ -21,7 +22,7 @@ class SearchScreenState extends State<SearchScreen> {
   List<Repository> _repositoryList = [];
   final _isSortAscending = false;
   final _currentSortOption = 'stars';
-    final gitHubApiService = GitHubApiService();
+  final gitHubApiService = GitHubApiService();
 
   /// リポジトリの検索を実行するメソッド
   void _searchRepositories() async {
@@ -66,7 +67,7 @@ class SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text("GitHub リポジトリ検索"),
+        title: Text(AppLocalizations.of(context)!.app_title),
         actions: [
           Padding(
 
@@ -77,7 +78,7 @@ class SearchScreenState extends State<SearchScreen> {
 
             child: IconButton(
               icon: const Icon(Icons.settings),
-              tooltip: 'テーマを変更',
+              tooltip: AppLocalizations.of(context)!.theme_tooltip,
               onPressed: () {
                 _showThemeBottomSheet(context);
               },

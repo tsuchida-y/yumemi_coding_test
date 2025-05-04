@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yumemi_coding_test/widgets/search/sort_dropdown.dart';
 
 /// 検索入力フィールド、検索ボタン、ソートドロップダウンをまとめたウィジェット。
@@ -26,7 +27,7 @@ class SearchControls extends StatelessWidget {
       children: [
         TextField(
           controller: userInputController,
-          decoration: const InputDecoration(labelText: "リポジトリ名で検索"),
+          decoration: InputDecoration(labelText: AppLocalizations.of(context)!.search_hint),
           onSubmitted: (_) => onSearchPressed(),
         ),
         const SizedBox(height: 8),
@@ -36,7 +37,7 @@ class SearchControls extends StatelessWidget {
             const Spacer(flex: 3),
             ElevatedButton(
               onPressed: onSearchPressed,
-              child: const Text("検索"),
+              child: Text(AppLocalizations.of(context)!.search_button),
             ),
             const Spacer(flex: 2),
             SortDropdown(

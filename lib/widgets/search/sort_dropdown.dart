@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 typedef SortCallback = void Function(String sortOption, bool isSortAscending);
 
@@ -50,11 +51,11 @@ class SortDropdown extends StatelessWidget {
       
       // ヘルパーメソッドを使って itemBuilder を簡潔にする
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-        _buildMenuItem('stars', "スター数でソート", currentSortOption == 'stars'),
-        _buildMenuItem('forks', "フォーク数でソート", currentSortOption == 'forks'),
+        _buildMenuItem('stars', AppLocalizations.of(context)!.sort_by_stars, currentSortOption == 'stars'),
+        _buildMenuItem('forks', AppLocalizations.of(context)!.sort_by_forks, currentSortOption == 'forks'),
         const PopupMenuDivider(), // 区切り線
-        _buildMenuItem('ascending', "昇順", isSortAscending),
-        _buildMenuItem('descending', "降順", !isSortAscending),
+        _buildMenuItem('ascending', AppLocalizations.of(context)!.sort_ascending, isSortAscending),
+        _buildMenuItem('descending', AppLocalizations.of(context)!.sort_ascending, !isSortAscending),
       ],
     );
   }

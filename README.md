@@ -46,26 +46,31 @@
 ## ファイル構成
 ```
 lib/
-├── main.dart                
-├── models/                   
-│   └── repository.dart       
-├── providers/                
-│   └── theme_provider.dart   
-├── screens/                  
-│   ├── repository_detail_screen.dart 
-│   └── search_screen.dart      
-├── services/                 
-│   └── github_api_service.dart 
-├── utils/                  
-│   ├── repository_sorter.dart  
-│   └── themes.dart           
-└── widgets/                 
-    ├── empty_result.dart     
-    ├── repository_card.dart  
-    ├── search_controls.dart 
-    ├── search_result_view.dart 
-    ├── sort_option.dart      
-    └── theme_selection_bottom_sheet.dart 
+├── main.dart
+├── models/
+│   └── repository.dart
+├── providers/
+│   └── theme_provider.dart
+├── screens/
+│   ├── search_screen.dart
+│   └── repository_detail_screen.dart
+├── services/
+│   └── github_api_service.dart
+├── utils/
+│   ├── repository_sorter.dart
+│   └── themes.dart
+└── widgets/
+    ├── common/
+    │   ├── empty_result.dart
+    │   └── repository_card.dart
+    ├── search/
+    │   ├── search_controls.dart
+    │   ├── search_result_view.dart
+    │   └── sort_dropdown.dart
+    ├── detail/
+    │   └── detail_row.dart
+    └── theme/
+        └── theme_selection_bottom_sheet.dart
 ```
 
 ## 開発ルール

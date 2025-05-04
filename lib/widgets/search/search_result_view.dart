@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:yumemi_coding_test/models/repository.dart';
-import 'package:yumemi_coding_test/widgets/empty_result.dart';
-import 'package:yumemi_coding_test/widgets/repository_card.dart';
+import 'package:yumemi_coding_test/widgets/common/empty_result.dart';
+import 'package:yumemi_coding_test/widgets/common/repository_card.dart';
 
 /// 検索結果リストまたは「結果なし」メッセージを表示するウィジェット。
 class SearchResultView extends StatelessWidget {

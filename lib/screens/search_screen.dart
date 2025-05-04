@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yumemi_coding_test/utils/repository_sorter.dart';
 import 'package:yumemi_coding_test/services/github_api_service.dart';
 import 'package:yumemi_coding_test/models/repository.dart';
+import 'package:yumemi_coding_test/widgets/common/error_snackbar.dart';
 import 'package:yumemi_coding_test/widgets/search/search_body_view.dart';
 import 'package:yumemi_coding_test/widgets/search/search_controls.dart';
 import 'package:yumemi_coding_test/widgets/theme/theme_selection_bottom_sheet.dart';
@@ -24,7 +25,7 @@ class SearchScreenState extends State<SearchScreen> {
   final _currentSortOption = 'stars';
   final gitHubApiService = GitHubApiService();
   bool _isLoading = false;
-  String? _errorMessage;
+  String? _searchTermErrorText;
   String? _apiErrorMessage;
 
 
@@ -33,24 +34,20 @@ class SearchScreenState extends State<SearchScreen> {
   void _searchRepositories() async {
     final repositoryName = _userInput.text;
 
-    // 検索語が空の場合は処理を中断
+    // 検索語が空の場合はSnackBarでメッセージを表示
     if (repositoryName.isEmpty) {
-      // 検索語が空の場合はSnackBarでメッセージを表示
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(AppLocalizations.of(context)!.search_term_empty),
-            backgroundColor: Colors.orange,
-          ),
-        );
-      }
-      return; // 処理を中断
+      setState(() {
+        _searchTermErrorText = AppLocalizations.of(context)!.search_term_empty;
+      });
+      return;
     }
+
 
     // 検索開始時に状態を更新
     setState(() {
       _isLoading = true;
-      _errorMessage = null;
+      _apiErrorMessage = null;
+      _searchTermErrorText = null;
       _repositoryList = [];
     });
 
@@ -70,14 +67,9 @@ class SearchScreenState extends State<SearchScreen> {
         _isLoading = false;
       });
 
-      // エラーメッセージをSnackBarで表示
+      // ErrorSnackbar を使用してエラーメッセージを表示
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(_apiErrorMessage!),
-            backgroundColor: Colors.red,
-          ),
-        );
+        ErrorSnackbar.show(context, _apiErrorMessage!);
       }
     }
   }

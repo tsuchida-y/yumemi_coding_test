@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// 検索結果が空の場合に表示するウィジェット
 class EmptyResultWidget extends StatelessWidget {
@@ -9,8 +10,7 @@ class EmptyResultWidget extends StatelessWidget {
   static const double _landscapeSpacing = 24.0;
   static const double _portraitImageSize = 300.0;
   static const double _landscapeImageSize = 150.0;
-  static const String _message = "該当するリポジトリが見つかりませんでした。\n"
-                                "別のキーワードで試してみてください！";
+  // Removed static _message; the localized string will be obtained using the provided context in build()
 
 
 
@@ -61,7 +61,7 @@ class EmptyResultWidget extends StatelessWidget {
 
     // 共通のテキストウィジェット
     final messageText = Text(
-      _message,
+      AppLocalizations.of(context)!.no_results,
       style: Theme.of(context).textTheme.bodyLarge,
       textAlign: TextAlign.center,
     );

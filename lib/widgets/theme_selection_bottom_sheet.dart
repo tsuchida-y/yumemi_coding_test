@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/theme_provider.dart';
+import 'package:yumemi_coding_test/providers/theme_provider.dart';
+
 
 /// テーマオプションのデータを定義するクラス
 class _ThemeOption {

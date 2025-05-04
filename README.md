@@ -14,6 +14,8 @@
 - **検索結果の表示**: リポジトリ名、スター数、言語、フォーク数、ウォッチャー数などを一覧表示。
 - **詳細画面**: リポジトリの詳細情報（オーナーのアバター画像、スター数、言語など）を表示。
 - **ソート機能**: 検索結果をスター数・フォーク数で昇順・降順にソート。
+- **テーマ切り替え**: ライトテーマとダークテーマの切り替え。
+- **レスポンシブレイアウト**: デバイスの向き（縦/横）に応じてレイアウトを最適化。
 
 ## 工夫した点
 
@@ -25,6 +27,7 @@
 -   **ユーザー体験 (UX) の向上**:
     *   **空の検索結果**: 検索結果がない場合に専用の画像とメッセージを表示し、ユーザーが状況を直感的に把握できるようにしました。
     *   **状態の可視化**: 現在選択されているソート条件やテーマモードにチェックマークを表示し、現在の設定を分かりやすくしました。
+    *   **レスポンシブ対応**: デバイスの向きに応じてレイアウトを調整し、特に横画面時にコンテンツが見切れたり操作しにくくなったりしないよう、マージン設定や要素の配置（例: 結果なし画面）を最適化しました。
 
 -   **開発プロセスの効率化**:
     *   **コミットメッセージ規約**: Conventional Commits のプレフィックス（例: `feat:`, `fix:`）を導入し、各コミットの変更内容を容易に識別できるようにしました。
@@ -43,24 +46,26 @@
 ## ファイル構成
 ```
 lib/
-├── main.dart
-├── models/
-│   └── repository.dart
-├── providers/
-│   └── theme_provider.dart
-├── screens/
-│   ├── repository_detail_screen.dart
-│   └── search_screen.dart
-├── services/
-│   └── github_api_service.dart
-├── utils/
-│   ├── repository_sorter.dart
-│   └── themes.dart
-└── widgets/
-    ├── empty_result.dart
-    ├── repository_card.dart
-    ├── sort_option.dart
-    └── theme_selection_bottom_sheet.dart
+├── main.dart                
+├── models/                   
+│   └── repository.dart       
+├── providers/                
+│   └── theme_provider.dart   
+├── screens/                  
+│   ├── repository_detail_screen.dart 
+│   └── search_screen.dart      
+├── services/                 
+│   └── github_api_service.dart 
+├── utils/                  
+│   ├── repository_sorter.dart  
+│   └── themes.dart           
+└── widgets/                 
+    ├── empty_result.dart     
+    ├── repository_card.dart  
+    ├── search_controls.dart 
+    ├── search_result_view.dart 
+    ├── sort_option.dart      
+    └── theme_selection_bottom_sheet.dart 
 ```
 
 ## 開発ルール
@@ -100,7 +105,7 @@ lib/
 - **多言語対応**:日本語と英語の切り替えをサポートする。
 - **アニメーション**:検索結果の表示にアニメーションを追加する。
 - **キャッシュ機能**:検索結果をローカルにキャッシュしてオフラインでも表示可能にする。
-- **UI/UX**: ダークモード対応、エラーメッセージ表示、レスポンシブデザインを実装。
+- **UI/UX**: エラーメッセージ表示、レスポンシブデザインを実装。
 
 ## アピールポイント
 - **レビューのしやすさ**:適切なコメントとファイル構成でコードを整理

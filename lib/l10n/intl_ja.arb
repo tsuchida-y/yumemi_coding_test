@@ -1,0 +1,18 @@
+{
+    "app_title": "GitHub リポジトリ検索",
+    "search_hint": "リポジトリ名を入力",
+    "search_button": "検索",
+    "sort_by_stars": "スター数でソート",
+    "sort_by_forks": "フォーク数でソート",
+    "sort_ascending": "昇順",
+    "sort_descending": "降順",
+    "theme_tooltip": "テーマを変更",
+    "no_results": "該当するリポジトリが見つかりませんでした。\n別のキーワードで試してください！",
+    "language": "言語",
+    "stars": "スター数",
+    "watchers": "ウォッチャー数",
+    "forks": "フォーク数",
+    "open_issues": "未解決の課題",
+    "theme_light": "ライトテーマ",
+    "theme_dark": "ダークテーマ"
+  }

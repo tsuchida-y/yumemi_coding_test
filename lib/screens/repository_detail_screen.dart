@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:yumemi_coding_test/models/repository.dart';
 import 'package:yumemi_coding_test/widgets/detail/detail_row.dart';
 
@@ -14,14 +15,14 @@ class RepositoryDetailScreen extends StatelessWidget {
     final deviceWidth = MediaQuery.of(context).size.width;
     const double sideMargin = 30.0;
 
-    // 表示するテキストと値をリストで管理
-    final repositoryDetails = [
-      {"label": "言語",         "value": repository.language},
-      {"label": "スター数",      "value": repository.stars.toString()},
-      {"label": "ウォッチャー数", "value": repository.watchers.toString()},
-      {"label": "フォーク数",    "value": repository.forks.toString()},
-      {"label": "未解決の課題",   "value": repository.openIssues.toString()},
-    ];
+  // 表示するテキストと値をリストで管理
+  final repositoryDetails = [
+    {"label": AppLocalizations.of(context)!.language,    "value": repository.language},
+    {"label": AppLocalizations.of(context)!.stars,       "value": repository.stars.toString()},
+    {"label": AppLocalizations.of(context)!.watchers,    "value": repository.watchers.toString()},
+    {"label": AppLocalizations.of(context)!.forks,       "value": repository.forks.toString()},
+    {"label": AppLocalizations.of(context)!.open_issues,  "value": repository.openIssues.toString()},
+  ];
 
     return Scaffold(
       appBar: AppBar(title: Text(repository.name)),

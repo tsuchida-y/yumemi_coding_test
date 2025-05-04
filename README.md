@@ -16,6 +16,7 @@
 - **ソート機能**: 検索結果をスター数・フォーク数で昇順・降順にソート。
 - **テーマ切り替え**: ライトテーマとダークテーマの切り替え。
 - **レスポンシブレイアウト**: デバイスの向き（縦/横）に応じてレイアウトを最適化。
+- **多言語対応**: 日本語と英語に対応。デバイスの言語設定に応じて表示言語を切り替え、サポート外言語の場合は英語を表示。
 
 ## 工夫した点
 
@@ -28,6 +29,8 @@
     *   **空の検索結果**: 検索結果がない場合に専用の画像とメッセージを表示し、ユーザーが状況を直感的に把握できるようにしました。
     *   **状態の可視化**: 現在選択されているソート条件やテーマモードにチェックマークを表示し、現在の設定を分かりやすくしました。
     *   **レスポンシブ対応**: デバイスの向きに応じてレイアウトを調整し、特に横画面時にコンテンツが見切れたり操作しにくくなったりしないよう、マージン設定や要素の配置（例: 結果なし画面）を最適化しました。
+    *   **多言語対応**: `flutter_localizations` を利用し、UI テキストを外部ファイル (`.arb`) で管理することで、日本語と英語に対応しました。`localeResolutionCallback` を使用して、サポートされていない言語の場合は英語にフォールバックするようにしました。
+
 
 -   **開発プロセスの効率化**:
     *   **コミットメッセージ規約**: Conventional Commits のプレフィックス（例: `feat:`, `fix:`）を導入し、各コミットの変更内容を容易に識別できるようにしました。
@@ -41,36 +44,41 @@
   - `http`: HTTP リクエストの送信
   - `provider`: 状態管理
   - `flutter_dotenv`: 環境変数管理 (.env ファイル)
+  - `flutter_localizations`: Flutter のローカライゼーションサポート
+  - `intl`: 国際化とローカライゼーションのためのユーティリティ
   - `flutter_test`: テストフレームワーク
 
 ## ファイル構成
 ```
 lib/
-├── main.dart
-├── models/
-│   └── repository.dart
-├── providers/
-│   └── theme_provider.dart
-├── screens/
-│   ├── search_screen.dart
-│   └── repository_detail_screen.dart
-├── services/
-│   └── github_api_service.dart
-├── utils/
-│   ├── repository_sorter.dart
-│   └── themes.dart
-└── widgets/
-    ├── common/
-    │   ├── empty_result.dart
-    │   └── repository_card.dart
-    ├── search/
-    │   ├── search_controls.dart
-    │   ├── search_result_view.dart
-    │   └── sort_dropdown.dart
-    ├── detail/
-    │   └── detail_row.dart
-    └── theme/
-        └── theme_selection_bottom_sheet.dart
+├── l10n/                               # ローカライゼーションファイル (.arb)
+│   ├── intl_en.arb                     # 英語
+│   └── intl_ja.arb                     # 日本語
+├── main.dart                           # アプリのエントリーポイント、MaterialApp設定
+├── models/                             # データモデル定義
+│   └── repository.dart                 # リポジトリデータモデル
+├── providers/                          # 状態管理 (Provider)
+│   └── theme_provider.dart             # テーマ状態管理
+├── screens/                            # 各画面のUIとロジック
+│   ├── search_screen.dart              # 検索画面
+│   └── repository_detail_screen.dart   # 詳細画面
+├── services/                           # 外部サービス連携 (APIなど)
+│   └── github_api_service.dart         # GitHub API連携
+├── utils/                              # ユーティリティ、ヘルパー関数
+│   ├── repository_sorter.dart          # ソートロジック
+│   └── themes.dart                     # テーマ定義
+└── widgets/                            # 再利用可能なUIコンポーネント
+    ├── common/                         # 複数画面で使われる共通ウィジェット
+    │   ├── empty_result.dart           # 結果なし表示
+    │   └── repository_card.dart        # リポジトリカード
+    ├── search/                         # 検索画面固有のウィジェット
+    │   ├── search_controls.dart        # 検索入力・操作部
+    │   ├── search_result_view.dart     # 検索結果リスト表示
+    │   └── sort_dropdown.dart          # ソート用ドロップダウン
+    ├── detail/                         # 詳細画面固有のウィジェット
+    │   └── detail_row.dart             # 詳細画面の行表示
+    └── theme/                          # テーマ関連ウィジェット
+        └── theme_selection_bottom_sheet.dart # テーマ選択ボトムシート
 ```
 
 ## 開発ルール
@@ -107,7 +115,7 @@ lib/
     ```bash
     flutter test
 ## 今後の改善点
-- **多言語対応**:日本語と英語の切り替えをサポートする。
+- **対応言語の追加**:他の言語への対応。
 - **アニメーション**:検索結果の表示にアニメーションを追加する。
 - **キャッシュ機能**:検索結果をローカルにキャッシュしてオフラインでも表示可能にする。
 - **UI/UX**: エラーメッセージ表示、レスポンシブデザインを実装。

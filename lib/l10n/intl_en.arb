@@ -1,0 +1,18 @@
+{
+    "app_title": "GitHub Repository Search",
+    "search_hint": "Enter repository name",
+    "search_button": "Search",
+    "sort_by_stars": "Sort by Stars",
+    "sort_by_forks": "Sort by Forks",
+    "sort_ascending": "Ascending",
+    "sort_descending": "Descending",
+    "theme_tooltip": "Change theme",
+    "no_results": "No repositories found.\nTry another keyword!",
+    "language": "Language",
+    "stars": "Stars",
+    "watchers": "Watchers",
+    "forks": "Forks",
+    "open_issues": "Open Issues",
+    "theme_light": "Light Theme",
+    "theme_dark": "Black Theme"
+  }

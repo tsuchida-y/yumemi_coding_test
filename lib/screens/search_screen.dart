@@ -25,7 +25,6 @@ class SearchScreenState extends State<SearchScreen> {
   final _currentSortOption = 'stars';
   final gitHubApiService = GitHubApiService();
   bool _isLoading = false;
-  String? _searchTermErrorText;
   String? _apiErrorMessage;
 
 
@@ -34,12 +33,15 @@ class SearchScreenState extends State<SearchScreen> {
   void _searchRepositories() async {
     final repositoryName = _userInput.text;
 
-    // 検索語が空の場合はSnackBarでメッセージを表示
+    // 検索語が空の場合は ErrorSnackbar でメッセージを表示
     if (repositoryName.isEmpty) {
-      setState(() {
-        _searchTermErrorText = AppLocalizations.of(context)!.search_term_empty;
-      });
-      return;
+      if (mounted) { // mounted チェック
+        ErrorSnackbar.show(
+          context,
+          AppLocalizations.of(context)!.search_term_empty,
+        );
+      }
+      return; // 処理を中断
     }
 
 
@@ -47,7 +49,6 @@ class SearchScreenState extends State<SearchScreen> {
     setState(() {
       _isLoading = true;
       _apiErrorMessage = null;
-      _searchTermErrorText = null;
       _repositoryList = [];
     });
 
@@ -147,7 +148,7 @@ class SearchScreenState extends State<SearchScreen> {
                       onSortSelected: _sortRepositories,
                       isSortAscending: _isSortAscending,
                       currentSortOption: _currentSortOption,
-                      portraitOrientation: portraitOrientation,
+                      portraitOrientation: portraitOrientation,         
                     ),
                     const SizedBox(height: 16),
 

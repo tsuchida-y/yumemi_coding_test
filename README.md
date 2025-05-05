@@ -140,6 +140,7 @@ lib/
 | 検索画面 (ライト) | 結果表示 (ダーク) | 詳細画面 |
 |---|---|---|
 | ![検索画面](screenshots/search_light.png) | ![結果表示](screenshots/results_dark.png) | ![詳細画面](screenshots/detail.png) |
+
 *(画像ファイルは `screenshots/`ディレクトリに配置)*
 ## 今後の改善点
 - **アニメーション**:検索結果の表示にアニメーションを追加する。

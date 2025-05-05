@@ -55,7 +55,7 @@ class SortDropdown extends StatelessWidget {
         _buildMenuItem('forks', AppLocalizations.of(context)!.sort_by_forks, currentSortOption == 'forks'),
         const PopupMenuDivider(), // 区切り線
         _buildMenuItem('ascending', AppLocalizations.of(context)!.sort_ascending, isSortAscending),
-        _buildMenuItem('descending', AppLocalizations.of(context)!.sort_ascending, !isSortAscending),
+        _buildMenuItem('descending', AppLocalizations.of(context)!.sort_descending, !isSortAscending),
       ],
     );
   }

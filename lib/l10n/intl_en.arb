@@ -14,5 +14,8 @@
     "forks": "Forks",
     "open_issues": "Open Issues",
     "theme_light": "Light Theme",
-    "theme_dark": "Black Theme"
+    "theme_dark": "Black Theme",
+    "notAvailable": "Not set",
+    "search_term_empty": "Please enter a search term.",
+    "fetch_error": "Failed to get repository"
   }

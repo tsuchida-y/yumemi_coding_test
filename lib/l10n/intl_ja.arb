@@ -14,5 +14,8 @@
     "forks": "フォーク数",
     "open_issues": "未解決の課題",
     "theme_light": "ライトテーマ",
-    "theme_dark": "ダークテーマ"
+    "theme_dark": "ダークテーマ",
+    "notAvailable": "未設定",
+    "search_term_empty": "検索キーワードを入力してください。",
+    "fetch_error": "リポジトリの取得に失敗しました"
   }

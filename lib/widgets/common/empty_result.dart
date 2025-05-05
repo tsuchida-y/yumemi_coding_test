@@ -42,10 +42,12 @@ class EmptyResultWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(
+                flex: 1,
                 child: imageWidget(_landscapeImageSize),
               ),
               const SizedBox(width: _landscapeSpacing),
               Flexible(
+                flex: 3,
                 child: messageText,
               ),
             ],
